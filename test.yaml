@@ -1,0 +1,13 @@
+---
+nscd::netgroup:
+  enable_cache: yes
+  suggested_size: 211
+  check_files: yes
+  persistent: yes
+  shared: no
+
+nscd::passwd:
+  enable_cache: yes
+  suggested_size: 211
+  check_files: yes
+  persistent: no
