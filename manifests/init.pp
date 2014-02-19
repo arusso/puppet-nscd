@@ -146,5 +146,6 @@ class nscd (
     group   => 'root',
     mode    => '0444',
     content => template('nscd/nscd.conf.erb'),
+    notify  => Class['nscd::service'],
   }
 }

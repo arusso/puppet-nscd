@@ -1,6 +1,9 @@
 # == Class: nscd::params
 #
 class nscd::params {
+  $service_enable = true
+  $service_ensure = 'running'
+
   $passwd_enable_cache      = 'yes'
   $passwd_positive_time_to_live      = '600'
   $passwd_negative_time_to_live      = '20'
