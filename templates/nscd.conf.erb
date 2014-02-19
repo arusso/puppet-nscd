@@ -41,10 +41,9 @@
 #       restart-interval        3600
 <% @nscd_services.each do |s| -%>
 
-  # Service: <%= s %>
   <%- @nscd_service_options.each do |o| -%>
     <%- if o != 'auto-propagate' or [ 'passwd','group' ].include? s -%>
-        <%= o %>                <%= s %>      <%= eval("@#{s}_#{o.tr('-','_')}") %>
+        <%= "%-24s%-16s%s" % [ o, s, eval("@#{s}_#{o.tr('-','_')}") ] %>
     <%- end -%>
   <%- end -%>
 <% end -%>
