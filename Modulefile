@@ -9,5 +9,4 @@ license "MIT License"
 
 # dependencies
 # ============
-dependency 'puppetlabs/stdlib' '>= 2.4.0'
-# dependency 'arusso/oski' '>= 0.0.1'
+dependency 'puppetlabs/stdlib', '>= 2.4.0'
