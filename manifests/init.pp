@@ -4,14 +4,56 @@
 #
 # === Parameters
 #
-# [*sample_parameter*]
-#   Explain what the parameter does, and what valid values it accepts, and what
-#   it's default is.
+# All parameters are presented in heira, under the nscd:: namespace. For
+# example, <code>nscd::passwd_enable_cache: yes</code>.
+#
+# [*passwd_enable_cache*]: <yes|no>
+# [*passwd_positive_time_to_live*]: <integer>
+# [*passwd_negative_time_to_live*]: <integer>
+# [*passwd_suggested_size*]: <integer>
+# [*passwd_check_files*]: <yes|no>
+# [*passwd_persistent*]: <yes|no>
+# [*passwd_shared*]: <yes|no>
+# [*passwd_max_db_size*]: <integer>
+# [*passwd_auto_propagate*]: <yes|no>
+# [*group_enable_cache*]: <yes|no>
+# [*group_positive_time_to_live*]: <integer>
+# [*group_negative_time_to_live*]: <integer>
+# [*group_suggested_size*]: <integer>
+# [*group_check_files*]: <yes|no>
+# [*group_persistent*]: <yes|no>
+# [*group_shared*]: <yes|no>
+# [*group_max_db_size*]: <integer>
+# [*group_auto_propagate*]: <yes|no>
+# [*hosts_enable_cache*]: <yes|no>
+# [*hosts_positive_time_to_live*]: <integer>
+# [*hosts_negative_time_to_live*]: <integer>
+# [*hosts_suggested_size*]: <integer>
+# [*hosts_check_files*]: <yes|no>
+# [*hosts_persistent*]: <yes|no>
+# [*hosts_shared*]: <yes|no>
+# [*hosts_max_db_size*]: <integer>
+# [*services_enable_cache*]: <yes|no>
+# [*services_positive_time_to_live*]: <integer>
+# [*services_negative_time_to_live*]: <integer>
+# [*services_suggested_size*]: <integer>
+# [*services_check_files*]: <yes|no>
+# [*services_persistent*]: <yes|no>
+# [*services_shared*]: <yes|no>
+# [*services_max_db_size*]: <integer>
+# [*netgroup_enable_cache*]: <yes|no>
+# [*netgroup_positive_time_to_live*]: <integer>
+# [*netgroup_negative_time_to_live*]: <integer>
+# [*netgroup_suggested_size*]: <integer>
+# [*netgroup_check_files*]: <yes|no>
+# [*netgroup_persistent*]: <yes|no>
+# [*netgroup_shared*]: <yes|no>
+# [*netgroup_max_db_size*]: <integer>
 #
 # === Examples
 #
 # class { nscd:
-#   sample_parameter => $sample_value,
+#   netgroup_enable_cache = 'no',
 # }
 #
 # === Authors
@@ -67,6 +109,36 @@ class nscd (
   $netgroup_max_db_size = hiera('nscd::netgroup::max_db_size', $netgroup_max_db_size),
 ) inherits nscd::params {
   ensure_packages( [ 'nscd' ] )
+
+  # do some validation
+  $yesno = '^(yes|no)$'
+
+  validate_re( $passwd_enable_cache, $yesno )
+  validate_re( $passwd_check_files, $yesno )
+  validate_re( $passwd_persistent, $yesno )
+  validate_re( $passwd_shared, $yesno )
+  validate_re( $passwd_auto_propagate, $yesno )
+
+  validate_re( $group_enable_cache, $yesno )
+  validate_re( $group_check_files, $yesno )
+  validate_re( $group_persistent, $yesno )
+  validate_re( $group_shared, $yesno )
+  validate_re( $group_auto_propagate, $yesno )
+
+  validate_re( $hosts_enable_cache, $yesno )
+  validate_re( $hosts_check_files, $yesno )
+  validate_re( $hosts_persistent, $yesno )
+  validate_re( $hosts_shared, $yesno )
+
+  validate_re( $services_enable_cache, $yesno )
+  validate_re( $services_check_files, $yesno )
+  validate_re( $services_persistent, $yesno )
+  validate_re( $services_shared, $yesno )
+
+  validate_re( $netgroup_enable_cache, $yesno )
+  validate_re( $netgroup_check_files, $yesno )
+  validate_re( $netgroup_persistent, $yesno )
+  validate_re( $netgroup_shared, $yesno )
 
   file { '/etc/nscd.conf':
     ensure  => present,
