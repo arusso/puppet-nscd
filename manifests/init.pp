@@ -108,44 +108,8 @@ class nscd (
   $netgroup_shared = hiera('nscd::netgroup_shared', $netgroup_shared),
   $netgroup_max_db_size = hiera('nscd::netgroup_max_db_size', $netgroup_max_db_size),
 ) inherits nscd::params {
-  ensure_packages( [ 'nscd' ] )
-
-  # do some validation
-  $yesno = '^(yes|no)$'
-
-  validate_re( $passwd_enable_cache, $yesno )
-  validate_re( $passwd_check_files, $yesno )
-  validate_re( $passwd_persistent, $yesno )
-  validate_re( $passwd_shared, $yesno )
-  validate_re( $passwd_auto_propagate, $yesno )
-
-  validate_re( $group_enable_cache, $yesno )
-  validate_re( $group_check_files, $yesno )
-  validate_re( $group_persistent, $yesno )
-  validate_re( $group_shared, $yesno )
-  validate_re( $group_auto_propagate, $yesno )
-
-  validate_re( $hosts_enable_cache, $yesno )
-  validate_re( $hosts_check_files, $yesno )
-  validate_re( $hosts_persistent, $yesno )
-  validate_re( $hosts_shared, $yesno )
-
-  validate_re( $services_enable_cache, $yesno )
-  validate_re( $services_check_files, $yesno )
-  validate_re( $services_persistent, $yesno )
-  validate_re( $services_shared, $yesno )
-
-  validate_re( $netgroup_enable_cache, $yesno )
-  validate_re( $netgroup_check_files, $yesno )
-  validate_re( $netgroup_persistent, $yesno )
-  validate_re( $netgroup_shared, $yesno )
-
-  file { '/etc/nscd.conf':
-    ensure  => present,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0444',
-    content => template('nscd/nscd.conf.erb'),
-    notify  => Class['nscd::service'],
-  }
+  Class['nscd'] ->
+  class { 'nscd::install': } ->
+  class { 'nscd::config': } ~>
+  class { 'nscd::service': }
 }
