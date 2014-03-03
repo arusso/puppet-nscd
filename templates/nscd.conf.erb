@@ -43,6 +43,7 @@
 
   <%- @nscd_service_options.each do |o| -%>
     <%- if o != 'auto-propagate' or [ 'passwd','group' ].include? s -%>
+        <%- break if o == 'enable-cache' and scope.lookupvar("::nscd::#{s}_#{o.tr('-','_')}") == 'no' -%>
         <%= "%-24s%-16s%s" % [ o, s, scope.lookupvar("::nscd::#{s}_#{o.tr('-','_')}") ] %>
     <%- end -%>
   <%- end -%>
