@@ -7,54 +7,54 @@
 # All parameters are presented in heira, under the nscd:: namespace. For
 # example, <code>nscd::passwd_enable_cache: yes</code>.
 #
-# [*passwd_enable_cache*]: <yes|no>
-# [*passwd_positive_time_to_live*]: <integer>
-# [*passwd_negative_time_to_live*]: <integer>
-# [*passwd_suggested_size*]: <integer>
-# [*passwd_check_files*]: <yes|no>
-# [*passwd_persistent*]: <yes|no>
-# [*passwd_shared*]: <yes|no>
-# [*passwd_max_db_size*]: <integer>
-# [*passwd_auto_propagate*]: <yes|no>
-# [*group_enable_cache*]: <yes|no>
-# [*group_positive_time_to_live*]: <integer>
-# [*group_negative_time_to_live*]: <integer>
-# [*group_suggested_size*]: <integer>
-# [*group_check_files*]: <yes|no>
-# [*group_persistent*]: <yes|no>
-# [*group_shared*]: <yes|no>
-# [*group_max_db_size*]: <integer>
-# [*group_auto_propagate*]: <yes|no>
-# [*hosts_enable_cache*]: <yes|no>
-# [*hosts_positive_time_to_live*]: <integer>
-# [*hosts_negative_time_to_live*]: <integer>
-# [*hosts_suggested_size*]: <integer>
-# [*hosts_check_files*]: <yes|no>
-# [*hosts_persistent*]: <yes|no>
-# [*hosts_shared*]: <yes|no>
-# [*hosts_max_db_size*]: <integer>
-# [*services_enable_cache*]: <yes|no>
-# [*services_positive_time_to_live*]: <integer>
-# [*services_negative_time_to_live*]: <integer>
-# [*services_suggested_size*]: <integer>
-# [*services_check_files*]: <yes|no>
-# [*services_persistent*]: <yes|no>
-# [*services_shared*]: <yes|no>
-# [*services_max_db_size*]: <integer>
-# [*netgroup_enable_cache*]: <yes|no>
-# [*netgroup_positive_time_to_live*]: <integer>
-# [*netgroup_negative_time_to_live*]: <integer>
-# [*netgroup_suggested_size*]: <integer>
-# [*netgroup_check_files*]: <yes|no>
-# [*netgroup_persistent*]: <yes|no>
-# [*netgroup_shared*]: <yes|no>
-# [*netgroup_max_db_size*]: <integer>
+# <code>passwd_enable_cache</code>:: <yes|no>
+# <code>passwd_positive_time_to_live</code>:: <integer>
+# <code>passwd_negative_time_to_live</code>:: <integer>
+# <code>passwd_suggested_size</code>:: <integer>
+# <code>passwd_check_files</code>:: <yes|no>
+# <code>passwd_persistent</code>:: <yes|no>
+# <code>passwd_shared</code>:: <yes|no>
+# <code>passwd_max_db_size</code>:: <integer>
+# <code>passwd_auto_propagate</code>:: <yes|no>
+# <code>group_enable_cache</code>:: <yes|no>
+# <code>group_positive_time_to_live</code>:: <integer>
+# <code>group_negative_time_to_live</code>:: <integer>
+# <code>group_suggested_size</code>:: <integer>
+# <code>group_check_files</code>:: <yes|no>
+# <code>group_persistent</code>:: <yes|no>
+# <code>group_shared</code>:: <yes|no>
+# <code>group_max_db_size</code>:: <integer>
+# <code>group_auto_propagate</code>:: <yes|no>
+# <code>hosts_enable_cache</code>:: <yes|no>
+# <code>hosts_positive_time_to_live</code>:: <integer>
+# <code>hosts_negative_time_to_live</code>:: <integer>
+# <code>hosts_suggested_size</code>:: <integer>
+# <code>hosts_check_files</code>:: <yes|no>
+# <code>hosts_persistent</code>:: <yes|no>
+# <code>hosts_shared</code>:: <yes|no>
+# <code>hosts_max_db_size</code>:: <integer>
+# <code>services_enable_cache</code>:: <yes|no>
+# <code>services_positive_time_to_live</code>:: <integer>
+# <code>services_negative_time_to_live</code>:: <integer>
+# <code>services_suggested_size</code>:: <integer>
+# <code>services_check_files</code>:: <yes|no>
+# <code>services_persistent</code>:: <yes|no>
+# <code>services_shared</code>:: <yes|no>
+# <code>services_max_db_size</code>:: <integer>
+# <code>netgroup_enable_cache</code>:: <yes|no>
+# <code>netgroup_positive_time_to_live</code>:: <integer>
+# <code>netgroup_negative_time_to_live</code>:: <integer>
+# <code>netgroup_suggested_size</code>:: <integer>
+# <code>netgroup_check_files</code>:: <yes|no>
+# <code>netgroup_persistent</code>:: <yes|no>
+# <code>netgroup_shared</code>:: <yes|no>
+# <code>netgroup_max_db_size</code>:: <integer>
 #
 # === Examples
 #
-# class { nscd:
-#   netgroup_enable_cache = 'no',
-# }
+#    class { nscd:
+#      netgroup_enable_cache = 'no',
+#    }
 #
 # === Authors
 #
