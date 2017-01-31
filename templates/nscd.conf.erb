@@ -39,9 +39,9 @@
 #       reload-count            5
         paranoia                no
 #       restart-interval        3600
-<% @nscd_services.each do |s| -%>
+<% scope.lookupvar("::nscd::params::nscd_services").each do |s| -%>
 
-  <%- @nscd_service_options.each do |o| -%>
+  <%- scope.lookupvar("::nscd::params::nscd_service_options").each do |o| -%>
     <%- if o != 'auto-propagate' or [ 'passwd','group' ].include? s -%>
         <%- break if o == 'enable-cache' and scope.lookupvar("::nscd::#{s}_#{o.tr('-','_')}") == 'no' -%>
         <%= "%-24s%-16s%s" % [ o, s, scope.lookupvar("::nscd::#{s}_#{o.tr('-','_')}") ] %>
